@@ -22,7 +22,6 @@ wget -O zabbix-6.0-ubuntu-focal.deb https://repo.zabbix.com/zabbix/6.0/ubuntu/po
 sudo dpkg -i zabbix-6.0-ubuntu-focal.deb && sudo rm -f zabbix-6.0-ubuntu-focal.deb
 sudo apt -y update
 sudo apt install -y zabbix-agent2
-sudo usermod -aG docker zabbix
 sudo apt -y upgrade
 ```
 #### 3- config and enable `zabbix_agent2.conf` :
@@ -32,6 +31,7 @@ sudo sed -i 's/ServerActive=127.0.0.1/ServerActive=127.0.0.1,172.16.238.5/g' /et
 sudo sed -i 's/Hostname=Zabbix server/Hostname=zabbix-server/g' /etc/zabbix/zabbix_agent2.conf
 sudo ufw allow 10050/tcp
 sudo systemctl enable --now zabbix-agent2
+sudo usermod -aG docker zabbix
 sudo systemctl restart zabbix-agent2
 ```
 #### 4- Clone this repo and cd into it, edit configs :
@@ -60,7 +60,7 @@ Pass : `zabbix`
 
 > 5- in Groups select : `Zabbix servers`
 
-> 6- in Interface add new agent, set DNS to `host.docker.internal` and type to `DNS`
+> 6- in Interface add new agent,remove IP ,set DNS to `host.docker.internal` and type to `DNS`
 
 > 7- Add New Server
 
