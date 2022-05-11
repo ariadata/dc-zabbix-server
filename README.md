@@ -7,6 +7,8 @@
 
 > This needs : [nginx-proxy-manager with docker-compose](https://github.com/ariadata/dc-nginxproxymanager) .
 
+[Manual install](https://www.digitalocean.com/community/tutorials/how-to-monitor-docker-using-zabbix-on-ubuntu-20-04)
+
 ---
 #### 1- Change `timezone` and `hostname` :
 ```sh
@@ -58,7 +60,7 @@ Pass : `zabbix`
 
 > 5- in Groups select : `Zabbix servers`
 
-> 6- in Interface add new agent, remove IP, set DNS to `host.docker.internal` and type to `DNS`
+> 6- in Interface add new agent, set DNS to `host.docker.internal` and type to `DNS`
 
 > 7- Add New Server
 
