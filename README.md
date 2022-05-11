@@ -17,8 +17,7 @@ sudo hostnamectl set-hostname "zabbix-server"
 #### 2- Update and install `zabbix-agent2` :
 ```sh
 wget -O zabbix-6.0-ubuntu-focal.deb https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-1+ubuntu20.04_all.deb
-sudo dpkg -i zabbix-6.0-ubuntu-focal.deb
-sudo rm -f zabbix-6x-ubuntu20-04.deb
+sudo dpkg -i zabbix-6.0-ubuntu-focal.deb && sudo rm -f zabbix-6.0-ubuntu-focal.deb
 sudo apt -y update
 sudo apt install -y zabbix-agent2
 sudo usermod -aG docker zabbix
@@ -59,7 +58,7 @@ Pass : `zabbix`
 
 > 5- in Groups select : `Zabbix servers`
 
-> 6- in Interface add new agent and set DNS name `host.docker.internal` and type `DNS`
+> 6- in Interface add new agent, remove IP, set DNS to `host.docker.internal` and type to `DNS`
 
 > 7- Add New Server
 
