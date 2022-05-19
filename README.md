@@ -80,6 +80,6 @@ docker-compose exec zabbix-server zabbix_server -R config_cache_reload
 >
 > Config SSL Part
 
-#### 9- goto : `https://Your-FQDN/`
+#### 10- goto : `https://Your-FQDN/`
 
 Done!
