@@ -41,6 +41,7 @@ services:
   depends_on:
    - postgres-server
   networks:
+   nginx-proxy-manager:
    zbx_net_backend:
      aliases:
       - zabbix-server
@@ -65,8 +66,8 @@ services:
  zabbix-web-nginx-pgsql:
   image: zabbix/zabbix-web-nginx-pgsql:alpine-6.0-latest
   restart: unless-stopped
-  ports:
-   - "8080:8080"
+#  ports:
+#   - "8080:8080"
 #   - "443:8443"
   volumes:
    - /etc/localtime:/etc/localtime:ro
@@ -97,6 +98,7 @@ services:
    retries: 3
    start_period: 30s
   networks:
+   nginx-proxy-manager:
    zbx_net_backend:
     aliases:
      - zabbix-web-nginx-pgsql
@@ -134,6 +136,8 @@ services:
 
 
 networks:
+  nginx-proxy-manager:
+    external: true
   zbx_net_frontend:
     driver: bridge
     driver_opts:
