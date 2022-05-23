@@ -62,23 +62,20 @@ User : `Admin`
 Pass : `zabbix`
 
 #### 8- In web gui , goto `Configuration`>`Hosts`:
-> 1- remove default item
+> 1- Edit default item
 
-> 2- create new host
+> 2- change Host name to : `zabbix-server`
 
-> 3- in Host name set : `zabbix-server`
+> 3- in Interface part, add `host.docker.internal` to dns part and set type to `DNS`
 
-> 4- in Templates select : `Docker by Zabbix agent 2`
-
-> 5- in Groups select : `Zabbix servers`
-
-> 6- in Interface add new agent,remove IP ,set DNS to `host.docker.internal` and type to `DNS`
-
-> 7- Add New Server
+> 7- Click Update
 
 #### 9- update and clear cache in zabbix-server:
 ```sh
 docker-compose exec zabbix-server zabbix_server -R config_cache_reload
+# reboot server
+sudo reboot
 ```
+#### 10- after reboot , ach to default problems and close them.
 
 Done!
