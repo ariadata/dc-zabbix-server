@@ -18,6 +18,7 @@ sudo hostnamectl set-hostname "zabbix-server"
 ---
 #### 2- Update and install `zabbix-agent2` :
 ```sh
+cd ~
 wget -O zabbix-6.0-ubuntu-focal.deb https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-1+ubuntu20.04_all.deb
 sudo dpkg -i zabbix-6.0-ubuntu-focal.deb && sudo rm -f zabbix-6.0-ubuntu-focal.deb
 sudo apt -y update
@@ -44,12 +45,23 @@ sudo echo -n "$(shuf -er -n32  {A..Z} {a..z} {0..9} | tr -d '\n')" > ./env_vars/
 ```sh
 docker-compose up -d
 ```
-#### 6- goto web GUI `http://IP:8080` and login with:
+#### 6- Goto Nginx-Proxy-Manager admin panel and add this stack as proxy-host :
+> Domain : `Your-FQDN` you must pointed it before!
+> 
+> Schema : `http`
+> 
+> Name or IP : `zabbix-web-nginx-pgsql`
+> 
+> Port : `8080`
+>
+> Config SSL Part
+
+#### 7- goto web GUI `https://Your-FQDN` and login with:
 User : `Admin`
 
 Pass : `zabbix`
 
-#### 7- In web gui , goto `Configuration`>`Hosts`:
+#### 8- In web gui , goto `Configuration`>`Hosts`:
 > 1- remove default item
 
 > 2- create new host
@@ -64,22 +76,9 @@ Pass : `zabbix`
 
 > 7- Add New Server
 
-#### 8- update and clear cache in zabbix-server:
+#### 9- update and clear cache in zabbix-server:
 ```sh
 docker-compose exec zabbix-server zabbix_server -R config_cache_reload
 ```
-
-#### 9- Goto Nginx-Proxy-Manager admin panel and add this stack as proxy-host :
-> Domain : `Your-FQDN` you must pointed it before!
-> 
-> Schema : `http`
-> 
-> Name or IP : `zabbix-server`
-> 
-> Port : `8080`
->
-> Config SSL Part
-
-#### 10- goto : `https://Your-FQDN/`
 
 Done!
