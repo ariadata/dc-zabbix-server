@@ -15,6 +15,11 @@
 sudo timedatectl set-timezone Europe/Istanbul
 sudo hostnamectl set-hostname "zabbix-server"
 ```
+#### *** Auto Install Steps 2 to 5
+after this , goto step `6`
+```sh
+bash <(curl -sSL https://github.com/ariadata/dc-zabbix-server/raw/main/zabbix-server-steps-2-to-5.sh)
+```
 ---
 #### 2- Update and install `zabbix-agent2` :
 ```sh
