@@ -17,7 +17,7 @@ sudo systemctl enable --now zabbix-agent2
 sudo usermod -aG docker zabbix
 sudo systemctl restart zabbix-agent2
 
-git clone https://github.com/ariadata/dc-zabbix-server.git dc-zabbix-server && cd dc-zabbix-server && rm -rf .git
+git clone https://github.com/ariadata/dc-zabbix-server.git dc-zabbix-server && cd dc-zabbix-server && rm -rf .git zabbix-server-steps-2-to-5.sh
 sudo sed -i "s|PHP_TZ=.*|PHP_TZ=$(cat /etc/timezone)|g" ./env_vars/.env_web
 sudo echo -n "$(shuf -er -n32  {A..Z} {a..z} {0..9} | tr -d '\n')" > ./env_vars/.POSTGRES_PASSWORD
 
