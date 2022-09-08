@@ -5,7 +5,7 @@
 ![](https://img.shields.io/github/watchers/ariadata/dc-zabbix-server.svg)
 ![](https://img.shields.io/github/forks/ariadata/dc-zabbix-server.svg)
 
-> This needs : [nginx-proxy-manager with docker-compose](https://github.com/ariadata/dc-nginxproxymanager) .
+> This needs : [nginx-proxy-manager](https://github.com/ariadata/dc-nginxproxymanager) + [dockerhost](https://github.com/ariadata/dockerhost-sh)
 
 [Manual install](https://www.digitalocean.com/community/tutorials/how-to-monitor-docker-using-zabbix-on-ubuntu-20-04)
 
